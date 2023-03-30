@@ -1,5 +1,5 @@
 # На какой группе серверов
-- hosts: webserver
+- hosts: webservers
   vars:
     root_dir: /usr/share/nginx/html
     nginx_port: 80
@@ -52,7 +52,7 @@
       tags: [nginx, built-app]
 
     - name: copy html
-      ansible.builtin.copy:
+      ansible.builtin.template:
         src: html/index.html
         dest: "{{ root_dir }}/index.html"
       become: yes
